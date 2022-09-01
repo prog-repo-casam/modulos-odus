@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem id="ca_support_menu_root" name="Soporte Tecnico">
+        <menuitem id="ca_support_reportar_problemas_menu" name="Reportar Problemas">
+            <menuitem id="ca_support_issue_menu_action" action="ca_support_issue_action"/>
+        </menuitem>
+    </menuitem>
+</odoo>

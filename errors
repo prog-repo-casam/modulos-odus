@@ -1,0 +1,15 @@
+    <record id="ca_costo_freight_cost_compute_view_wizard" model="ir.ui.view">
+        <field name="name">Ejecutar Actualizador de Costes</field>
+        <field name="model">ca.costo.freight.compute</field>
+        <field name="arch" type="xml">
+            <form>
+                <p>
+                Se actualizaran el coste de todos los productos asociados a fletes
+                </p>
+                <footer>
+                    <button name="recalculate_products_freight_cost" string="Recalcular Costos" type="object" class="btn-primary"/>
+                    <button string="Cancelar" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>

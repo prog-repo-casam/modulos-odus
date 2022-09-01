@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="ca_support_issue_view_search" model="ir.ui.view">
+        <field name="name">ca.support.issue.view.search</field>
+        <field name="model">ca.support.issue</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="description"/>
+                <field name="issue_type"/>
+                <field name="priority"/>
+                <field name="state"/>
+                <field name="user_id"/>
+                <separator />
+                <filter name="waiting" string="Por resolver" domain="[('state', 'in', ('nuevo','en_proceso'))]"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="ca_support_issue_view_form" model="ir.ui.view">
+        <field name="name">ca.support.issue.view.form</field>
+        <field name="model">ca.support.issue</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_procesar" type="object" string="Procesar" class="btn-primary" states="nuevo" groups="base.group_system"/>
+                    <button name="action_finalizar" type="object" string="Finalizar" states="nuevo" groups="base.group_system"/>
+                    <button name="action_finalizar" type="object" string="Finalizar" class="btn-primary" states="en_proceso" groups="base.group_system"/>
+                    <button name="action_cancelar" type="object" string="Cancelar" states="nuevo,en_proceso" groups="base.group_system"/>
+                    <field name="state" widget="statusbar" statusbar_visible="nuevo,en_proceso,finalizado"/>
+                </header>
+
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field class="text-break" name="name" placeholder="Ejemplo: Error al crear factura en Ventas"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="issue_type"/>
+                            <field name="user_id"/>
+                        </group>
+
+                        <group>
+                            <field name="priority"/>
+                            <field name="assigned_developer_id"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="attachment"/>
+                    </group>
+                    <notebook>
+                        <page string="Descripcion">
+                            <field name="description" placeholder="Ejemplo: Buenos dias, al crear una factura en el modulo de ventas aparece el siguiente error, también adjunto capture de en que parte de la applicacion me encuentro: "/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="ca_support_issue_view_tree" model="ir.ui.view">
+        <field name="name">ca.support.issue.view.tree</field>
+        <field name="model">ca.support.issue</field>
+        <field name="arch" type="xml">
+            <tree string="Tickets">
+                <field name="name"/>
+                <field name="issue_type"/>
+                <field name="priority"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+    
+    <record id="ca_support_issue_action" model="ir.actions.act_window">
+        <field name="name">Tickets</field>
+        <field name="res_model">ca.support.issue</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'search_default_waiting': True}</field>
+    </record>
+</odoo>

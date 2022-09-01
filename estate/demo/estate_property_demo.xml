@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="estate_property_1" model="estate.property">
+        <field name="name">Big Villa</field>
+        <field name="state">new</field>
+        <field name="description">A nice and big villa</field>
+        <field name="postcode">12345</field>
+        <field name="date_availability">2022-08-17</field>
+        <field name="expected_price">1600000.00</field>
+        <field name="bedrooms">6</field>
+        <field name="living_area">100</field>
+        <field name="facades">4</field>
+        <field name="garage">True</field>
+        <field name="garden">True</field>
+        <field name="garden_area">100000</field>
+        <field name="garden_orientation">south</field>
+    </record>
+
+    <record id="estate_property_2" model="estate.property">
+        <field name="name">Trailer home</field>
+        <field name="state">canceled</field>
+        <field name="description">Home in a trailer park</field>
+        <field name="postcode">54321</field>
+        <field name="date_availability">2022-08-12</field>
+        <field name="expected_price">100000.00</field>
+        <field name="selling_price">120000.00</field>
+        <field name="bedrooms">1</field>
+        <field name="living_area">10</field>
+        <field name="facades">4</field>
+        <field name="garage">False</field>
+    </record>
+
+    <record id="estate_property_1" model="estate.property">
+        <field name="property_type_id" ref="estate.estate_property_type_1"/>
+    </record>
+
+    <record id="estate_property_2" model="estate.property">
+        <field name="property_type_id" ref="estate.estate_property_type_1"/>
+    </record>
+
+    <record id="estate_property_3" model="estate.property">
+        <field name="name">My new demo house</field>
+        <field name="property_type_id" ref="estate.estate_property_type_1"/>
+        <field name="state">new</field>
+        <field name="description">Home to test if I can x2many</field>
+        <field name="postcode">54789</field>
+        <field name="expected_price">250000</field>
+        <field name="bedrooms">4</field>
+        <field name="living_area">250</field>
+        <field name="facades">4</field>
+        <field name="garage">True</field>
+        <field name="garden">True</field>
+        <field name="garden_area">1000</field>
+        <field name="garden_orientation">north</field>
+        <field name="offer_ids" eval="[
+            Command.create({
+                'create_date': datetime.now() - relativedelta(days=8),
+                'partner_id': ref('base.res_partner_12'),
+                'price': 10000,
+                'validity': 14
+            }),
+            Command.create({
+                'create_date': datetime.now() - relativedelta(days=8),
+                'partner_id': ref('base.res_partner_12'),
+                'price': 1500000,
+                'validity': 14
+            }),
+            Command.create({
+                'create_date': datetime.now() - relativedelta(days=8),
+                'partner_id': ref('base.res_partner_2'),
+                'price': 1500001,
+                'validity': 14
+            })
+        ]"/>
+    </record>
+</odoo>

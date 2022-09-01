@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="ca_costo_nationalization_view_search" model="ir.ui.view">
+        <field name="name">ca.costo.nationalization.view.search</field>
+        <field name="model">ca.costo.nationalization</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="price"/>
+                <field name="product_template_id"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="ca_costo_nationalization_view_form" model="ir.ui.view">
+        <field name="name">ca.costo.nationalization.view.form</field>
+        <field name="model">ca.costo.nationalization</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="price"/>
+                            <field name="product_template_id"/>
+                        </group>
+                        <group></group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="ca_costo_nationalization_view_tree" model="ir.ui.view">
+        <field name="name">ca.costo.nationalization.view.tree</field>
+        <field name="model">ca.costo.nationalization</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom">
+                <field name="price"/>
+                <field name="product_template_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="ca_costo_nationalization_action" model="ir.actions.act_window">
+        <field name="name">Ajustar Nacionalizaciones</field>
+        <field name="res_model">ca.costo.nationalization</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

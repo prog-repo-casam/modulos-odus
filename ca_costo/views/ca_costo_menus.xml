@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="ca_costo_menu_root" name="Actualizar Costos">
+        <menuitem id="ca_costo_costes_importacion_menu" name="Costes de Importacion">
+            <menuitem id="ca_costo_freight_menu_action" action="ca_costo_freight_action"/>
+            <menuitem id="ca_costo_nationalization_menu_action" action="ca_costo_nationalization_action"/>
+        </menuitem>
+        <menuitem id="ca_costo_actualizar_menu" name="Actualizar">
+            <menuitem id="ca_costo_freight_compute_menu_action" action="ca_costo_freight_compute_action"/> 
+        </menuitem>
+    </menuitem>
+</odoo>

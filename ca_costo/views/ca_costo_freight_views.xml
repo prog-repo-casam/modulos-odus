@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="ca_costo_freight_view_search" model="ir.ui.view">
+        <field name="name">ca.costo.freight.view.search</field>
+        <field name="model">ca.costo.freight</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="price"/>
+                <field name="country_id"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="ca_costo_freight_view_form" model="ir.ui.view">
+        <field name="name">ca.costo.freight.view.form</field>
+        <field name="model">ca.costo.freight</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="price"/>
+                            <field name="country_id"/>
+                        </group>
+                        <group></group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="ca_costo_freight_view_tree" model="ir.ui.view">
+        <field name="name">ca.costo.freight.view.tree</field>
+        <field name="model">ca.costo.freight</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom">
+                <field name="price"/>
+                <field name="country_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="ca_costo_freight_action" model="ir.actions.act_window">
+        <field name="name">Ajustar Fletes</field>
+        <field name="res_model">ca.costo.freight</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

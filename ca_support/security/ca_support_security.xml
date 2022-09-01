@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="base.module_category_technical_support" model="ir.module.category">
+        <field name="description">Gestionar los empleados que pueden crear tickets de soporte tecnico</field>
+    </record>
+
+    <record id="ca_support_group_user" model="res.groups">
+        <field name="name">Usuario</field>
+        <field name="comment">Permite ver, crear y modificar tickets de soporte tecnico</field>
+        <field name="category_id" ref="base.module_category_technical_support"/>
+    </record>
+
+    <record id="ca_support_issue_rule_user" model="ir.rule">
+        <field name="name">Los empleados solo pueden controlar sus propios tickets de soporte</field>
+        <field name="model_id" ref="model_ca_support_issue"/>
+        <field name="groups" eval="[Command.link(ref('ca_support_group_user'))]"/>
+        <field name="domain_force">['&amp;',('user_id','=',user.id),('company_id', 'in', company_ids)]</field>
+    </record>
+</odoo>
